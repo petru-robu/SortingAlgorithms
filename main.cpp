@@ -1,8 +1,15 @@
 #include <bits/stdc++.h>
-#include "algs.h"
-using namespace std;
+#include <chrono>
+#include "headers/algs.h"
+#include "headers/utilities.h"
 
-ifstream fin("vector.in");
+#define PREC 2
+
+using namespace std;
+using namespace std::chrono;
+
+ifstream fin("iofiles/vector.txt");
+ofstream fout("iofiles/timings.txt");
 
 int main()
 {
@@ -10,24 +17,65 @@ int main()
   fin>>n;
   for(int i=1; i<=n; i++)
     fin>>v[i];
+  
+  fout<<fixed<<setprecision(PREC);
 
-  QuickSort(v, 1, n);
-  print(v, n);
-  MergeSort(v, 1, n);
-  print(v, n);
-  SelectionSort(v, n);
-  print(v, n);
+  auto start= high_resolution_clock::now(), stop= high_resolution_clock::now();
+  auto duration=duration_cast<nanoseconds>(stop - start);
+
+  start = high_resolution_clock::now();
   InsertionSort(v, n);
-  print(v, n);
+  stop = high_resolution_clock::now();
+  duration = duration_cast<nanoseconds>(stop - start);
+  fout<<"Insertion Sort: "<< duration.count()<<"ms "<<'\n';
+
+  read(v, n, fin);
+
+  start = high_resolution_clock::now();
   BubbleSort(v, n);
-  print(v, n);
+  stop = high_resolution_clock::now();
+  duration = duration_cast<nanoseconds>(stop - start);
+  fout<<"Bubble Sort: "<< duration.count()<<"ms "<<'\n';
+
+  read(v, n, fin);
+
+  start = high_resolution_clock::now();
+  SelectionSort(v, n);
+  stop = high_resolution_clock::now();
+  duration = duration_cast<nanoseconds>(stop - start);
+  fout<<"Selection Sort: "<< duration.count()<<"ms "<<'\n';
+
+  read(v, n, fin);
+
+  start = high_resolution_clock::now();
+  MergeSort(v, 1, n);
+  stop = high_resolution_clock::now();
+  duration = duration_cast<nanoseconds>(stop - start);
+  fout<<"Merge Sort: "<< duration.count()<<"ms "<<'\n';
+
+  read(v, n, fin);
+
+  start = high_resolution_clock::now();
+  QuickSort(v, 1, n);
+  stop = high_resolution_clock::now();
+  duration = duration_cast<nanoseconds>(stop - start);
+  fout<<"Quick Sort: "<< duration.count()<<"ms "<<'\n';
+
+  read(v, n, fin);
+
+  start = high_resolution_clock::now();
   CountingSort(v, n);
-  print(v, n);
+  stop = high_resolution_clock::now();
+  duration = duration_cast<nanoseconds>(stop - start);
+  fout<<"Counting Sort: "<< duration.count()<<"ms "<<'\n';
+
+  read(v, n, fin);
+
+  start = high_resolution_clock::now();
   RadixSort(v, n);
-  print(v, n);
-  HeapSort(v, n);
-  print(v, n);
-
-
-
+  stop = high_resolution_clock::now();
+  duration = duration_cast<nanoseconds>(stop - start);
+  fout<<"Radix Sort: "<< duration.count()<<"ms "<<'\n';  
+  
+  return 0;
 }
