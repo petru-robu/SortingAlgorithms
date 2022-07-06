@@ -1,0 +1,7 @@
+Insertion Sort: 0ms 
+Bubble Sort: 0ms 
+Selection Sort: 0ms 
+Merge Sort: 0ms 
+Quick Sort: 0ms 
+Counting Sort: 0ms 
+Radix Sort: 0ms 
