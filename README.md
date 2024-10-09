@@ -1,1 +1,2 @@
-Algoritimi de sortare
+# Sorting Algorithms
+Some well known sorting algorithms implemented in C++.
